@@ -1,0 +1,19 @@
+id,message,expected_intent
+A001,I forgot the password for the service app,App_Login
+A002,My profile keeps getting locked,App_Login
+A003,I cannot get past the sign-in screen,App_Login
+A004,My prepaid service is linked to my other email,Duplicate_Email
+A005,I have two accounts under one email,Duplicate_Email
+A006,My email is already attached to an old service,Duplicate_Email
+A007,My invoice seems higher than expected,Billing
+A008,I was billed for something I didn't buy,Billing
+A009,There is an unexpected fee on my account,Billing
+A010,My calls keep dropping at home,Network_Issue
+A011,The reception is terrible in my area,Network_Issue
+A012,I can't use cellular data,Network_Issue
+A013,The checkout page keeps freezing,Online_Order
+A014,I haven't received my new handset,Online_Order
+A015,My payment failed when ordering a phone online,Online_Order
+A016,How do I change my contact number?,Fallback
+A017,Can I buy a phone case in store?,Fallback
+A018,My phone won't charge anymore,Fallback

@@ -1,0 +1,8 @@
+id,message,expected_intent
+D001,the service app keeps logging me out,App_Login
+D002,I can't get access to my profile,App_Login
+D003,My email is associated with another prepaid account,Duplicate_Email
+D004,Why is my monthly charge higher than usual?,Billing
+D005,I think I owe more than I should,Billing
+D006,My mobile signal keeps dropping,Network_Issue
+D007,My online order has not arrived,Online_Order

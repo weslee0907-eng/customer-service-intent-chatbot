@@ -1,0 +1,61 @@
+id,message,expected_intent
+T001,I cannot log in to the app,App_Login
+T002,My password is not working,App_Login
+T003,How do I sign in to my account?,App_Login
+T004,I cannot access my account,App_Login
+T005,The app keeps rejecting my login,App_Login
+T006,Forgot my password again,App_Login
+T007,Unable to access the app,App_Login
+T008,It says my credentials are wrong,App_Login
+T009,The app signs me out every time,App_Login
+T010,Please help me get into my account,App_Login
+T011,I am locked out of the app,App_Login
+T012,Cannot sign into my profile,App_Login
+T013,My email is already linked to another account,Duplicate_Email
+T014,It says email already registered,Duplicate_Email
+T015,The email is in use by a prepaid service,Duplicate_Email
+T016,I have a duplicate email problem,Duplicate_Email
+T017,Why is the same email attached to two numbers?,Duplicate_Email
+T018,Email already associated with a different account,Duplicate_Email
+T019,The system says my email is used elsewhere,Duplicate_Email
+T020,My prepaid login has an email conflict,Duplicate_Email
+T021,I cannot sign in because this email is already linked,Duplicate_Email
+T022,Two accounts share the same email address,Duplicate_Email
+T023,Email in use when I create a profile,Duplicate_Email
+T024,I need to separate accounts using one email,Duplicate_Email
+T025,My online order failed,Online_Order
+T026,Checkout crashed when buying a phone,Online_Order
+T027,Where is my delivery?,Online_Order
+T028,Order confirmation never arrived,Online_Order
+T029,My purchase online did not complete,Online_Order
+T030,Can I track my order?,Online_Order
+T031,The checkout page freezes,Online_Order
+T032,I placed an order but got no reference number,Online_Order
+T033,I cannot finish ordering a new SIM,Online_Order
+T034,My web order was cancelled,Online_Order
+T035,I got an error at checkout,Online_Order
+T036,The online store will not accept my order,Online_Order
+T037,Why is my bill higher this month?,Billing
+T038,I was charged twice,Billing
+T039,Can I see my invoice?,Billing
+T040,My direct debit failed,Billing
+T041,I have a payment question,Billing
+T042,My bill includes an extra fee,Billing
+T043,How do I download my invoice?,Billing
+T044,I was charged after cancellation,Billing
+T045,Payment went through but balance is unchanged,Billing
+T046,I need help understanding charges,Billing
+T047,When is my next bill due?,Billing
+T048,The amount owing looks incorrect,Billing
+T049,My internet keeps dropping out,Network_Issue
+T050,I have no network signal,Network_Issue
+T051,Mobile data is slow,Network_Issue
+T052,Is there a coverage outage?,Network_Issue
+T053,Wi-Fi will not connect,Network_Issue
+T054,My connection disconnects every hour,Network_Issue
+T055,Calls fail due to poor signal,Network_Issue
+T056,The internet stopped working,Network_Issue
+T057,Network coverage is weak at home,Network_Issue
+T058,My mobile data does not load pages,Network_Issue
+T059,I cannot connect to wifi,Network_Issue
+T060,Why is my signal so bad?,Network_Issue

@@ -1,0 +1,61 @@
+id,message,expected_intent,predicted_intent,correct
+T001,I cannot log in to the app,App_Login,App_Login,1
+T002,My password is not working,App_Login,App_Login,1
+T003,How do I sign in to my account?,App_Login,App_Login,1
+T004,I cannot access my account,App_Login,App_Login,1
+T005,The app keeps rejecting my login,App_Login,App_Login,1
+T006,Forgot my password again,App_Login,App_Login,1
+T007,Unable to access the app,App_Login,App_Login,1
+T008,It says my credentials are wrong,App_Login,App_Login,1
+T009,The app signs me out every time,App_Login,App_Login,1
+T010,Please help me get into my account,App_Login,App_Login,1
+T011,I am locked out of the app,App_Login,App_Login,1
+T012,Cannot sign into my profile,App_Login,App_Login,1
+T013,My email is already linked to another account,Duplicate_Email,Duplicate_Email,1
+T014,It says email already registered,Duplicate_Email,Duplicate_Email,1
+T015,The email is in use by a prepaid service,Duplicate_Email,Duplicate_Email,1
+T016,I have a duplicate email problem,Duplicate_Email,Duplicate_Email,1
+T017,Why is the same email attached to two numbers?,Duplicate_Email,Duplicate_Email,1
+T018,Email already associated with a different account,Duplicate_Email,Duplicate_Email,1
+T019,The system says my email is used elsewhere,Duplicate_Email,Duplicate_Email,1
+T020,My prepaid login has an email conflict,Duplicate_Email,Duplicate_Email,1
+T021,I cannot sign in because this email is already linked,Duplicate_Email,Duplicate_Email,1
+T022,Two accounts share the same email address,Duplicate_Email,Duplicate_Email,1
+T023,Email in use when I create a profile,Duplicate_Email,Duplicate_Email,1
+T024,I need to separate accounts using one email,Duplicate_Email,Duplicate_Email,1
+T025,My online order failed,Online_Order,Online_Order,1
+T026,Checkout crashed when buying a phone,Online_Order,Online_Order,1
+T027,Where is my delivery?,Online_Order,Online_Order,1
+T028,Order confirmation never arrived,Online_Order,Online_Order,1
+T029,My purchase online did not complete,Online_Order,Online_Order,1
+T030,Can I track my order?,Online_Order,Online_Order,1
+T031,The checkout page freezes,Online_Order,Online_Order,1
+T032,I placed an order but got no reference number,Online_Order,Online_Order,1
+T033,I cannot finish ordering a new SIM,Online_Order,Online_Order,1
+T034,My web order was cancelled,Online_Order,Online_Order,1
+T035,I got an error at checkout,Online_Order,Online_Order,1
+T036,The online store will not accept my order,Online_Order,Online_Order,1
+T037,Why is my bill higher this month?,Billing,Billing,1
+T038,I was charged twice,Billing,Billing,1
+T039,Can I see my invoice?,Billing,Billing,1
+T040,My direct debit failed,Billing,Billing,1
+T041,I have a payment question,Billing,Billing,1
+T042,My bill includes an extra fee,Billing,Billing,1
+T043,How do I download my invoice?,Billing,Billing,1
+T044,I was charged after cancellation,Billing,Billing,1
+T045,Payment went through but balance is unchanged,Billing,Billing,1
+T046,I need help understanding charges,Billing,Billing,1
+T047,When is my next bill due?,Billing,Billing,1
+T048,The amount owing looks incorrect,Billing,Billing,1
+T049,My internet keeps dropping out,Network_Issue,Network_Issue,1
+T050,I have no network signal,Network_Issue,Network_Issue,1
+T051,Mobile data is slow,Network_Issue,Network_Issue,1
+T052,Is there a coverage outage?,Network_Issue,Network_Issue,1
+T053,Wi-Fi will not connect,Network_Issue,Network_Issue,1
+T054,My connection disconnects every hour,Network_Issue,Network_Issue,1
+T055,Calls fail due to poor signal,Network_Issue,Network_Issue,1
+T056,The internet stopped working,Network_Issue,Network_Issue,1
+T057,Network coverage is weak at home,Network_Issue,Network_Issue,1
+T058,My mobile data does not load pages,Network_Issue,Network_Issue,1
+T059,I cannot connect to wifi,Network_Issue,Network_Issue,1
+T060,Why is my signal so bad?,Network_Issue,Network_Issue,1

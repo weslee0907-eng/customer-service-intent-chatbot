@@ -1,0 +1,35 @@
+{
+  "python_version": "3.13.17",
+  "runs": [
+    {
+      "command": "python intent_classifier.py",
+      "exit_code": 0,
+      "stdout": "Test accuracy: 60/60 = 100.0%\nErrors:\nQA results saved to .\\qa_results.csv\n",
+      "stderr": ""
+    },
+    {
+      "command": "python test_chatbot.py",
+      "exit_code": 0,
+      "stdout": "PASS Network topic switch\nPASS App login topic switch\nPASS Normal billing clarification\nPASS Invalid clarification answer\nPASS Cancel conversation\nPASS Phone charging clarification\nPASS Natural language billing clarification\nPASS Natural language phone charging\nPASS Natural language restart\nConversation QA: 9/9 passed\n",
+      "stderr": ""
+    },
+    {
+      "command": "python run_qa.py",
+      "exit_code": 0,
+      "stdout": "\nKnown cases\nTest accuracy: 60/60 = 100.0%\nErrors:\nQA results saved to .\\qa_results.csv\n\nDevelopment examples\nTest accuracy: 7/7 = 100.0%\nErrors:\nQA results saved to .\\development_results.csv\n\nValidation examples\nTest accuracy: 12/12 = 100.0%\nErrors:\nQA results saved to .\\validation_results.csv\n\nAdditional examples\nTest accuracy: 18/18 = 100.0%\nErrors:\nQA results saved to .\\additional_results.csv\nPASS Network topic switch\nPASS App login topic switch\nPASS Normal billing clarification\nPASS Invalid clarification answer\nPASS Cancel conversation\nPASS Phone charging clarification\nPASS Natural language billing clarification\nPASS Natural language phone charging\nPASS Natural language restart\nConversation QA: 9/9 passed\nOverall QA: PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": "python test_review.py",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_billing_paraphrases_resolve_clarification (__main__.ReviewTests.test_billing_paraphrases_resolve_clarification) ... ok\ntest_empty_input_preserves_waiting_state (__main__.ReviewTests.test_empty_input_preserves_waiting_state) ... ok\ntest_failures_are_reported (__main__.ReviewTests.test_failures_are_reported) ... ok\ntest_malformed_csv (__main__.ReviewTests.test_malformed_csv) ... ok\ntest_non_string_inputs (__main__.ReviewTests.test_non_string_inputs) ... ok\ntest_numbered_billing_and_reset_commands (__main__.ReviewTests.test_numbered_billing_and_reset_commands) ... ok\ntest_other_supported_topic_switches (__main__.ReviewTests.test_other_supported_topic_switches) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.035s\n\nOK\n"
+    },
+    {
+      "command": "Notebook sequential Python code execution",
+      "exit_code": 0,
+      "stdout": "Test accuracy: 60/60 = 100.0%\nErrors:\nQA results saved to .\\qa_results.csv\nTest accuracy: 7/7 = 100.0%\nErrors:\nQA results saved to .\\development_results.csv\nTest accuracy: 12/12 = 100.0%\nErrors:\nQA results saved to .\\validation_results.csv\nTest accuracy: 18/18 = 100.0%\nErrors:\nQA results saved to .\\additional_results.csv\nCustomer: I have a charge issue\nBot: Is this about Billing (1) or Phone Charging (2)?\nCustomer: 2\nBot: Let's troubleshoot your phone charging issue.\nCustomer: My internet is not working\nBot: Are you experiencing mobile network issues?\nCustomer: cancel\nBot: Conversation reset. How can I help you?\nPASS Network topic switch\nPASS App login topic switch\nPASS Normal billing clarification\nPASS Invalid clarification answer\nPASS Cancel conversation\nPASS Phone charging clarification\nPASS Natural language billing clarification\nPASS Natural language phone charging\nPASS Natural language restart\nConversation QA: 9/9 passed\nIt's not about my bill, my phone won't charge -> Fallback | Could you please provide more details?\nI don't have a network issue, I forgot my password -> App_Login | Are you having trouble logging into the service app?\nI can't log in and my internet is not working -> App_Login | Are you having trouble logging into the service app?\nMy bill is fine, but I can't place an online order -> Online_Order | Do you need help with an online order?\nqa_dashboard.svg\nExecuted 6 code cells in order\n",
+      "stderr": ""
+    }
+  ]
+}

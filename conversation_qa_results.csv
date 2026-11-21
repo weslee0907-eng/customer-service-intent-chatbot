@@ -1,0 +1,10 @@
+Test_Name,Expected_Response,Actual_Response,Expected_State,Actual_State,Result
+Network topic switch,Are you experiencing mobile network issues?,Are you experiencing mobile network issues?,None,None,PASS
+App login topic switch,Are you having trouble logging into the service app?,Are you having trouble logging into the service app?,None,None,PASS
+Normal billing clarification,I can help you with your billing enquiry.,I can help you with your billing enquiry.,None,None,PASS
+Invalid clarification answer,Please choose Billing (1) or Phone Charging (2).,Please choose Billing (1) or Phone Charging (2).,waiting_for_charge_choice,waiting_for_charge_choice,PASS
+Cancel conversation,Conversation reset. How can I help you?,Conversation reset. How can I help you?,None,None,PASS
+Phone charging clarification,Let's troubleshoot your phone charging issue.,Let's troubleshoot your phone charging issue.,None,None,PASS
+Natural language billing clarification,I can help you with your billing enquiry.,I can help you with your billing enquiry.,None,None,PASS
+Natural language phone charging,Let's troubleshoot your phone charging issue.,Let's troubleshoot your phone charging issue.,None,None,PASS
+Natural language restart,Conversation reset. How can I help you?,Conversation reset. How can I help you?,None,None,PASS

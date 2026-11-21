@@ -1,0 +1,13 @@
+id,message,expected_intent
+V001,I can't sign into the service app,App_Login
+V002,The app says my account is locked,App_Login
+V003,My old prepaid account is using my email address,Duplicate_Email
+V004,Two accounts are sharing the same email address,Duplicate_Email
+V005,Why was I charged twice this month?,Billing
+V006,Can you explain the extra fees on my statement?,Billing
+V007,My 5G connection is unstable,Network_Issue
+V008,I have no reception inside my house,Network_Issue
+V009,Where is the phone I ordered last week?,Online_Order
+V010,The website won't let me complete my purchase,Online_Order
+V011,I want to charge my phone,Fallback
+V012,Can I change my contact number?,Fallback
