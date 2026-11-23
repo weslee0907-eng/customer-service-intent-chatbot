@@ -1,17 +1,33 @@
 # Customer Service Intent Classifier & Chatbot
 
-## About this project
-This is a personal learning portfolio independently assembled by the author, with ChatGPT assistance for learning Python, developing code, debugging and improving documentation. It demonstrates a simple rule-based chatbot using simulated customer messages. It is not an employer product, an official service, or a production system. No real customer data or internal company material is intended or required.
+## About the Project
 
-## What it demonstrates
-- Intent classification: App_Login, Duplicate_Email, Online_Order, Billing, Network_Issue, Fallback and Clarification.
-- Multi-turn clarification for ambiguous charge enquiries, with billing or device-charging choices.
-- Topic switching, cancel and restart commands.
-- Automated classification QA and conversation response/state checks.
-- Reproducible CSV results and an SVG dashboard.
+I built this project to practise Python and explore how a customer service chatbot can identify different types of enquiries.
 
-## Run locally
-Python 3.10 or newer is recommended; this revision was checked with Python 3.13.17. The scripts use only the Python standard library. Extract the complete project and open a terminal in this folder:
+My experience in customer service helped me come up with realistic scenarios, while my IT background gave me a starting point for developing the code. I also used ChatGPT to help me learn Python, troubleshoot errors and improve the project.
+
+This is a personal learning project using fictional customer messages. It is not connected to any employer or real customer system.
+
+## What the Chatbot Does
+
+The chatbot uses simple Python rules to recognise customer enquiries across six main categories:
+
+- App Login
+- Duplicate Email
+- Online Orders
+- Billing
+- Network Issues
+- Fallback (when an enquiry is not recognised)
+
+It also supports clarification when a customer mentions an unclear charging issue, switching between topics, and cancelling or restarting a conversation.
+
+The project includes automated tests and a dashboard to track the results.
+
+## How to Run It
+
+The project uses Python 3.10+ and does not require additional libraries for the main scripts.
+
+Download the project, open a terminal in the project folder and run:
 
 ```bash
 python intent_classifier.py
@@ -19,77 +35,85 @@ python test_chatbot.py
 python run_qa.py
 ```
 
-`run_qa.py` evaluates all four classification datasets, runs conversation QA, and regenerates the result CSVs and dashboard. The final review independently reproduced 106/106 passing predefined tests. These are regression examples already seen during development, not a held-out evaluation. The script returns exit code 0 when all tests pass and a nonzero exit code if any test fails.
-
-For separate engineering regression checks:
+To run the additional engineering checks:
 
 ```bash
 python test_review.py
 ```
 
-These seven unittest methods cover billing clarification, remaining topic switches, reset commands, input validation, malformed CSVs and failure reporting. They are separate from the original 106 cases and are not included in the dashboard denominator. All seven passed in the final review. See `execution_results.json` for captured command results.
-
-For a quick interaction:
+You can also try a short conversation in Python:
 
 ```python
 import chatbot
+
 print(chatbot.chat("I have a charge issue"))
 print(chatbot.chat("2"))
 print(chatbot.chat("cancel"))
 ```
 
-To use the notebook, install Jupyter separately (`python -m pip install notebook`) and open `Customer_Service_Chatbot_Development.ipynb` from the project directory. In Colab, upload the Python and CSV files to the notebook's current directory first. The notebook needs no pandas or plotting packages. During final review, all six code cells ran sequentially in a fresh Python process. Jupyter/Colab UI and kernel integration were not tested because Jupyter was not installed. Its code cells import the same modules as the scripts; they do not rewrite source files or mount cloud drives.
+The `Customer_Service_Chatbot_Development.ipynb` notebook provides a walkthrough of the project. It can be opened using Jupyter or Google Colab, with the project files available in the working directory.
 
-## QA Results and Improvements
+## Testing and Improvements
 
-Final review: 2026-11-22 (Australia/Brisbane), Python 3.13.17 on Windows. The current 106/106 result was independently rerun. The historical Before Improvements figures below are author-reported; the earlier implementation was not supplied and those figures were not independently reproduced.
+I started by testing the classifier against a collection of simulated customer messages. Some messages were classified incorrectly because customers can describe the same problem in different ways.
 
-| Test Suite | Before Improvements | After Improvements |
+I reviewed the failed cases, updated the keyword rules and ran the tests again. I kept the original expected answers unchanged.
+
+| Test Set | Before | After |
 |---|---:|---:|
-| Known classification cases | 60/60 | 60/60 |
+| Original classification cases | 60/60 | 60/60 |
 | Development examples | 2/7 | 7/7 |
 | Validation examples | 9/12 | 12/12 |
 | Additional examples | 11/18 | 18/18 |
-| Conversation QA | 9/9 | 9/9 |
+| Conversation tests | 9/9 | 9/9 |
 | **Total** | **91/106** | **106/106** |
 
-### Improvement Process
+The final review also passed seven additional engineering checks covering conversation behaviour, input validation and error handling.
 
-I reviewed the failed classification cases and expanded the keyword rules to recognise more natural customer expressions relating to app login, duplicate email, online orders, billing and network issues.
+These results are based on predefined tests, including examples used during development. They show that the current code passes those tests, not that the chatbot will correctly understand every new customer message.
 
-The expected test labels were not changed.
+![QA Dashboard](qa_dashboard.svg)
 
-### Exploratory Testing
+## What I Learned
 
-The author previously reported manually testing five additional messages. The final review reproduced the documented example `I cannot make calls at home`: it still returns Fallback, although it may indicate a network issue. The other four original verbatim messages were not supplied, so that historical manual test was not independently reproduced.
+Working on this project helped me understand:
 
-### Important Limitations
+- How a rule-based intent classifier works.
+- How keyword matching and rule priority affect classification.
+- How to manage basic conversation states and clarification questions.
+- How to use automated tests to identify and fix problems.
+- Why passing known tests does not guarantee good results on new inputs.
 
-The 100% pass rate applies only to predefined tests, including cases used to improve the classifier. It does not represent accuracy on unseen customer messages or real-world performance.
+I also gained more confidence using Python, debugging code and working with CSV files.
 
-The chatbot remains rule-based and may struggle with unfamiliar wording, negation, multiple intents and context-dependent enquiries.
+## Limitations and Next Steps
 
-![QA dashboard](qa_dashboard.svg)
+This is a rule-based chatbot, not a machine learning model or an LLM.
 
-## Files
+It works best with familiar wording and may struggle with unexpected phrases, multiple questions in one message or enquiries that need more context.
+
+For example, **"I cannot make calls at home"** currently returns `Fallback`, even though it could indicate a network issue.
+
+If I continue developing the project, I would like to test it with more unseen examples, improve how it handles different wording and eventually compare it with a simple machine learning approach.
+
+## Project Files
+
 | File | Purpose |
-| --- | --- |
-| `intent_classifier.py` | Ordered keyword rules and CSV evaluation |
-| `chatbot.py` | Predefined responses and one conversation state |
-| `test_chatbot.py` | Nine original conversation scenarios; CSV export |
-| `test_review.py` | Seven additional engineering regression checks |
-| `execution_results.json` | Captured final command and notebook execution results |
-| `run_qa.py` | All classification datasets, conversation QA and dashboard |
-| `test_cases.csv` | Original 60 classification examples |
-| `development_cases.csv`, `validation_cases.csv`, `additional_cases.csv` | Original notebook examples recovered with their labels |
-| `*_results.csv` | Regenerated predictions and pass/fail results |
-| `Customer_Service_Chatbot_Development.ipynb` | Clean sequential walkthrough; saved without outputs |
-| `edge_case_summary.md` | Observations on negation, charging and multiple intents |
-| `REVIEW_REPORT.md` | Review scope, changes, privacy findings and validation limits |
+|---|---|
+| `intent_classifier.py` | Classifies customer messages |
+| `chatbot.py` | Handles responses and conversation flow |
+| `run_qa.py` | Runs the main automated tests |
+| `test_chatbot.py` | Tests conversation scenarios |
+| `test_review.py` | Runs additional engineering checks |
+| `test_cases.csv` | Original classification test cases |
+| `development_cases.csv`, `validation_cases.csv`, `additional_cases.csv` | Additional classification examples |
+| `*_results.csv` | Saved test results |
+| `qa_dashboard.svg` | Visual summary of QA results |
+| `Customer_Service_Chatbot_Development.ipynb` | Development walkthrough |
+| `edge_case_summary.md` | Notes on challenging test cases |
+| `REVIEW_REPORT.md` | Detailed project review |
+| `execution_results.json` | Results recorded during final review |
 
-## Design and limitations
-The classifier lowercases input and checks keyword groups in order. The first match determines one intent. The chatbot stores whether it is waiting for a billing/charging choice and clears that state when a supported topic switch or reset occurs.
+---
 
-This is not machine learning or an LLM. It does not parse negation, understand every paraphrase, return multiple intents or solve customer account issues. Substring rules can produce false matches. Direct phone-charging questions return Fallback because device support is outside the classifier categories; charging guidance is a placeholder available through clarification. The global conversation state supports one demo conversation per Python process, not simultaneous users. English string input is expected; non-string input raises a clear TypeError. Empty input returns Fallback or repeats the pending clarification prompt. The classifier priority is: device charging, ambiguous charging, duplicate email, login, online order, billing, network, then Fallback. Do not enter real customer details.
-
-Future work could use new independently authored evaluation cases, per-session state and a comparison with a simple machine-learning baseline. Measure improvements on separate data rather than repeatedly tuning to the same examples.
+*Developed as a personal learning portfolio with ChatGPT assistance. All customer examples are simulated.*
