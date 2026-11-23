@@ -1,67 +1,97 @@
-# GitHub Pre-publication Final Review
+# Project Review
 
-Reviewed: 2026-11-22 (Australia/Brisbane). Runtime: Python 3.13.17, Windows.
+**Last reviewed:** 22 November 2026  
+**Environment:** Python 3.13.17, Windows
 
-## Input and scope
+## Overview
 
-The supplied `Conversational_AI_Project.zip` was read and extracted successfully. ZIP CRC validation passed. The archive contained one project root, with all requested Python, notebook, CSV, Markdown, SVG and `.gitignore` files. No required project files were missing or duplicated in nested project folders. Compiled Python cache files were present and are excluded from the release archive because they are generated, unnecessary and can embed local paths.
+Before publishing this project on GitHub, I completed a final review to make sure the code, test results and documentation were consistent.
 
-Every delivered text file was read during review, including all four original Python files, the notebook's six code cells and six Markdown cells, all nine CSVs, all three Markdown documents, the SVG and `.gitignore`. Module imports and file references resolve with the documented project working directory. Scripts locate their datasets relative to their own file; the notebook explicitly requires the project working directory.
+I checked the Python scripts, Jupyter notebook, CSV datasets, README, dashboard and other project files. I also reviewed the content for unnecessary company references and sensitive information.
 
-## Fixes
+The project uses fictional customer enquiries and is intended for learning and demonstration.
 
-- Waiting for charge clarification previously recognised only a small billing vocabulary. Messages such as `My payment failed` could be left waiting even though the classifier recognised Billing. The chatbot now uses the same classifier and shared response mapping for all supported topic switches, avoiding duplicated responses.
-- The standalone classifier command previously always exited successfully after evaluation, even if a prediction was wrong. It now returns exit code 1 on failed cases, matching the other QA commands.
-- Non-string classifier/chat input now raises a clear TypeError. Empty chat input remains safe and preserves a pending clarification. Missing, blank or extra CSV cells now produce a descriptive ValueError.
-- Tidied indentation without changing keyword rules or priority. Preserved the one-state conversation design and standard-library-only implementation.
-- Regenerated all five result CSVs and the SVG. Added a dashboard total and refreshed the current review documentation. Kept historical improvement numbers explicitly identified as author-reported, since the earlier implementation is unavailable.
-- Added seven separate engineering regression checks in `test_review.py`. They are not added to the 106-case dashboard denominator.
+## Changes Made
 
-## Actual execution
+During the final review, I made a few improvements:
 
-| Command | Exit code | Result |
-| --- | ---: | --- |
-| `python intent_classifier.py` | 0 | 60/60 |
-| `python test_chatbot.py` | 0 | 9/9 |
-| `python run_qa.py` | 0 | 106/106 across all five groups |
-| `python test_review.py` | 0 | 7/7 unittest methods, with parameterised subchecks |
-| Notebook: six code cells sequentially in a fresh Python process | 0 | All executed without runtime errors |
+- **Conversation handling:** Fixed an issue where the chatbot could miss a topic change while waiting for a billing or charging clarification.
+- **Error handling:** Improved how the classifier handles invalid inputs and incorrectly formatted CSV files.
+- **Testing:** Updated the scripts so they report failures properly instead of always returning a successful exit code.
+- **Code cleanup:** Improved indentation and readability while keeping the existing keyword rules and classification order.
+- **Documentation:** Updated the README, test results and QA dashboard to reflect the current project.
 
-| Predefined group | Before this review | After fixes |
-| --- | ---: | ---: |
-| Known classification | 60/60 | 60/60 |
-| Development | 7/7 | 7/7 |
-| Validation | 12/12 | 12/12 |
-| Additional | 18/18 | 18/18 |
-| Conversation QA | 9/9 | 9/9 |
-| Total | 106/106 | 106/106 |
+I also added seven engineering checks in `test_review.py` to cover conversation behaviour, input validation and error handling.
 
-No exceptions or failures occurred in these normal runs. `execution_results.json` contains captured stdout, stderr and exit codes, with machine-specific project paths removed. Python was invoked using its installed executable because the default Windows `python` alias was broken in this environment.
+The original test cases and expected answers were not changed.
 
-Original classification dataset files and `test_chatbot.py` were compared byte-for-byte with the supplied ZIP and are unchanged. No expected label was changed and no failing original case was removed. Each input dataset has unique case IDs and no duplicate message rows within that dataset. Output CSV rows and dashboard counts were checked against the current inputs and predictions.
+## Test Results
 
-Failure detection was separately tested in a temporary project copy by forcing the classifier to predict Fallback. All three requested commands then returned exit code 1. Original labels were untouched, the temporary copy was discarded, and only normal regenerated results are delivered.
+I ran the project using Python 3.13.17 on Windows.
 
-## Notebook validation boundary
+| Test | Result |
+|---|---|
+| Intent classifier | 60/60 passed |
+| Conversation tests | 9/9 passed |
+| Full QA suite | 106/106 passed |
+| Additional engineering checks | 7/7 passed |
+| Notebook code cells | 6/6 executed successfully |
 
-All six code cells were executed from first to last in a fresh Python process and shared namespace, including module imports, examples, conversation checks and dashboard generation. The notebook imports the delivered code; it contains no classifier redefinitions, source-file overwrites, obsolete cloud paths, embedded customer data, old outputs or backup cells. Saved outputs and execution counts remain empty.
+All four Python test commands completed with exit code `0`.
 
-Jupyter, nbclient and ipykernel were not installed in this Python environment. A complete Jupyter kernel, browser session or Colab upload flow was therefore not tested. Sequential Python execution validates the cell code, not that integration.
+I also checked that the test scripts correctly report failures when incorrect predictions are introduced in a temporary copy of the project.
 
-## Privacy and publication findings
+The QA dashboard and result CSV files were regenerated after the final review.
 
-No unnecessary employer branding, internal project names, identifiable customer names, actual email addresses, phone/account numbers, customer records, internal business data, credentials, API keys, tokens, internal system addresses, private links or sensitive personal paths were found in the reviewed release text. `password` and `credentials` occur as generic intent keywords and simulated enquiry wording, not actual secrets. The public SVG XML namespace is a format identifier, not an external data dependency. No network or employer service is accessed by the code.
+The full command results are saved in `execution_results.json`.
 
-The compiled caches from the input archive were excluded rather than published. Privacy review is based on supplied content and cannot independently establish the original provenance of every simulated example. No unresolved item requiring a sensitivity decision was identified in the release text.
+## Notebook Review
 
-## Remaining limitations
+I checked the notebook to make sure it uses the current Python scripts and project files.
 
-**Known test pass rate is not real-world accuracy.** All named datasets, including the file called validation, were seen during development and keyword tuning; none is an independent held-out benchmark. The historical 91/106 before-improvement score was not reproduced because that earlier implementation was not supplied.
+All six code cells ran in order without errors in a fresh Python process.
 
-The exact documented exploratory message `I cannot make calls at home` was rerun and still predicts Fallback, a potential network false negative. The other four historical exploratory inputs were only summarised, so their exact manual runs could not be independently reproduced. All four exact notebook edge cases were rerun with the documented outcomes.
+The notebook no longer contains old Google Colab paths, duplicate classifier implementations or unnecessary saved outputs.
 
-Substring rules can misread word fragments, negation, unfamiliar wording and messages with multiple intents. Device-charging patterns and ambiguous charging take priority; a mixed enquiry may therefore select Fallback or Clarification before other intents. The global conversation state supports one conversation per Python process. Responses are prompts or placeholders, not account actions or actual troubleshooting. This is a personal rule-based learning project, independently assembled with ChatGPT assistance, not an ML model, LLM or commercial product.
+I did not test it through the full Jupyter or Google Colab interface, so that part remains unverified.
 
-## Release packaging
+## Privacy Check
 
-The final archive contains one project folder, without Python caches, notebook checkpoints, virtual environments or Git metadata. A fresh extraction was used to rerun the QA suite and engineering checks. ZIP CRC and required file presence were verified before delivery.
+I reviewed the project for company-specific information, real customer details, passwords, API keys and other sensitive content.
+
+I did not find any sensitive information in the reviewed files.
+
+The project uses simulated customer messages and does not connect to company systems or external services.
+
+I also removed unnecessary Python cache files from the final release.
+
+This check covers the project files provided for review; it does not independently verify how every example was originally created.
+
+## Known Limitations
+
+Although all 106 predefined tests pass, these examples were already used during development. The result does not mean the chatbot will achieve 100% accuracy with new customer messages.
+
+For example, the message:
+
+`I cannot make calls at home`
+
+still returns `Fallback`, even though it could be related to a network issue.
+
+Other limitations include:
+
+- The chatbot relies on keyword matching rather than understanding the full meaning of a message.
+- It may struggle with unfamiliar wording, negative statements or multiple questions.
+- It supports one demonstration conversation at a time.
+- Its responses are predefined and cannot access real customer accounts or resolve service issues.
+
+This is a rule-based Python project, not a machine learning model or an LLM.
+
+## Final Status
+
+The final project was checked, repackaged and tested again after extraction.
+
+The ZIP file passed its integrity check, and the required project files were present. Temporary Python cache files were excluded.
+
+**The project is ready to publish on GitHub as a personal learning portfolio.**
+
+There is still room to improve how the chatbot handles unfamiliar customer messages, which would be a useful next step if I continue developing it.
